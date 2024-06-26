@@ -4,6 +4,7 @@ from beyondllm import source, retrieve, embeddings, llms, generator
 from beyondllm.embeddings import AzureAIEmbeddings
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm import source
+import base64
 import os
 pdf = [ ]
 pdf_paths = "/Doctor_prescription_files/"
@@ -30,11 +31,15 @@ embed_model = AzureAIEmbeddings(
 )
 
 # For LLM
-BASE_URL =  os.getenv('BASE_URL')
-DEPLOYMENT_NAME= os.getenv('DEPLOYMENT_NAME')
-API_KEY = os.getenv('API_KEY')
+# BASE_URL =  os.getenv('BASE_URL')
+# DEPLOYMENT_NAME= os.getenv('DEPLOYMENT_NAME')
+# API_KEY = os.getenv('API_KEY')
 
-print(BASE_URL, DEPLOYMENT_NAME, API_KEY) 
+DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
+auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
+auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
+
+
 system_prompt = "You should act like an Chatbot...."
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson'), 'Leslie Terry','Danny Smith'))
 st.title("Chat with Prescription Patient data file of 'Bobby Jackson'.")
