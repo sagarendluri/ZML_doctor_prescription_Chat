@@ -21,8 +21,8 @@ st.title("Chat with ZML file Patient data file.")
 # print(f"deployment_key:{secret_value}")
 
 
-DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
-print(DEPLOYMENT_NAME)
+deployment = os.environ['DEPLOYMENT_NAME']
+print(deployment)
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
 # auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
 # deployment_name = os.getenv("DEPLOYMENT_NAME")
