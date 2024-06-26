@@ -16,6 +16,7 @@ BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
 # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
 
+os.environ["PATH"] += os.pathsep + "/usr/local/Cellar/graphviz/2.49.3/bin/dot"
 
 def json_to_decision_tree(json_data, graph=None, parent_name=None, node_name=None):
     if graph is None:
