@@ -15,6 +15,8 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #         if file.endswith('.pdf'):
 #             paths = pdf_paths + file
 #             pdf.append(paths)
+
+
 # embedding_models
 endpoint_url = os.getenv('ENDPOINT_URL')
 azure_key = os.getenv('AZURE_KEY')
