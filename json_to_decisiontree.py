@@ -7,6 +7,9 @@ from graphviz import Digraph
 import streamlit as st
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
+import mglearn as mglearn
+mglearn.plots.plot_animal_tree()
+
 
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
@@ -16,7 +19,7 @@ BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
 # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
 
-os.environ["PATH"] += os.pathsep + "/usr/local/Cellar/graphviz/2.49.3/bin/dot"
+
 
 def json_to_decision_tree(json_data, graph=None, parent_name=None, node_name=None):
     if graph is None:
