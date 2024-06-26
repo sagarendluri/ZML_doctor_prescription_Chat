@@ -8,7 +8,7 @@ import os
 pdf = [ ]
 pdf_paths = "/Doctor_prescription_files/"
 
-pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_files/Prescription_3.pdf', 'Doctor_prescription_files/Prescription_2.pdf']
+pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_files/Prescription_3.pdf', 'Doctor_prescription_files/Prescription_2.pdf']
 # dir = os.walk(pdf_paths)
 # for root, dir,files  in dir:
 #     for file in files:
@@ -24,7 +24,8 @@ embed_model = AzureAIEmbeddings(
 BASE_URL = "https://gpt-res.openai.azure.com/"
 DEPLOYMENT_NAME= "gpt-4-32k" 
 API_KEY = "a20bc67dbd7c47ed8c978bbcfdacf930"
-
+# option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson'), 'Leslie Terry','Danny Smith'))
+st.title("Chat with ZML file Patient data file of 'Bobby Jackson'.")
 data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
 # text_embedding = embed_model.embed_text(str(data))
 retriever = retrieve.auto_retriever(data,embed_model=embed_model,type="normal",top_k=4)
