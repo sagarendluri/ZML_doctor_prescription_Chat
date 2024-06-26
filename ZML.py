@@ -32,12 +32,12 @@ embed_model = AzureAIEmbeddings(
     endpoint_url = endpoint_url,
     azure_key = azure_key,
     api_version= api_version,
-    deployment_name=deployment_name_embedding
+    deployment_name=deployment_name
 )
 data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
 # text_embedding = embed_model.embed_text(str(data))
 retriever = retrieve.auto_retriever(data,embed_model=embed_model,type="normal",top_k=4)
-llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name=DEPLOYMENT_NAME_M ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
+llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name=DEPLOYMENT_NAME ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson', 'Leslie Terry','Danny Smith'))
 question = st.text_input("Enter your question")
 # question = "what is the Bobby Jackson condition?"
