@@ -22,21 +22,14 @@ endpoint_url = st.secrets.ENDPOINT_URL
 azure_key = st.secrets.AZURE_KEY
 api_version = st.secrets.API_VERSION
 deployment_name = st.secrets.DEPLOYMENT_NAME
-# headers = {
 
-#     endpoint_url = endpoint_url,
-#     azure_key = azure_key,
-#     api_version=api_version,
-#     deployment_name=deployment_name
-    
-# }
 
-# embed_model = AzureAIEmbeddings(
-#     endpoint_url = st.secrets[endpoint_url],
-#     azure_key = st.secrets[azure_key],
-#     api_version= st.secrets[api_version],
-#     deployment_name=st.secrets[deployment_name]
-# )
+embed_model = AzureAIEmbeddings(
+    endpoint_url = st.secrets[endpoint_url],
+    azure_key = st.secrets[azure_key],
+    api_version= st.secrets[api_version],
+    deployment_name=st.secrets[deployment_name]
+)
 # BASE_URL = st.secrets[BASE_URL]
 # DEPLOYMENT_NAME= st.secrets[DEPLOYMENT_NAME] 
 # API_KEY = st.secrets[API_KEY]
