@@ -24,17 +24,17 @@ endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
 api_version = st.secrets.azure_embeddings_credentials.API_VERSION
 deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
-
+BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
+DEPLOYMENT_NAME= st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
+API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
 
 embed_model = AzureAIEmbeddings(
-    endpoint_url = st.secrets[endpoint_url],
-    azure_key = st.secrets[azure_key],
-    api_version= st.secrets[api_version],
-    deployment_name=st.secrets[deployment_name]
+    endpoint_url = endpoint_url,
+    azure_key = azure_key,
+    api_version= api_version,
+    deployment_name=deployment_name
 )
-# BASE_URL = st.secrets[BASE_URL]
-# DEPLOYMENT_NAME= st.secrets[DEPLOYMENT_NAME] 
-# API_KEY = st.secrets[API_KEY]
+
 
 # data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
 # # text_embedding = embed_model.embed_text(str(data))
