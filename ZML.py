@@ -25,8 +25,6 @@ BASE_URL = "https://gpt-res.openai.azure.com/"
 DEPLOYMENT_NAME= "gpt-4-32k" 
 API_KEY = "a20bc67dbd7c47ed8c978bbcfdacf930"
 
-# question = "what is the Bobby Jackson condition?"
-# def llmmodels(question):
 data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
 # text_embedding = embed_model.embed_text(str(data))
 retriever = retrieve.auto_retriever(data,embed_model=embed_model,type="normal",top_k=4)
