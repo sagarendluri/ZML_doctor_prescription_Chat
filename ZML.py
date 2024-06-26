@@ -26,7 +26,7 @@ embed_model = AzureAIEmbeddings(
     endpoint_url="https://marketplace.openai.azure.com/",
     azure_key="d6d9522a01c74836907af2f3fd72ff85",
     api_version="2024-02-01",
-    deployment_name_embeddings="text-embed-marketplace"
+    deployment_name="text-embed-marketplace"
 )
 
 # For LLM
