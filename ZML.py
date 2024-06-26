@@ -16,7 +16,7 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #         if file.endswith('.pdf'):
 #             paths = pdf_paths + file
 #             pdf.append(paths)
-
+st.title("Chat with ZML file Patient data file.")
 
 # DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
