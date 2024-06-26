@@ -18,10 +18,10 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_fil
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
 
-endpoint_url = st.secrets["ENDPOINT_URL"]
-azure_key = st.secrets["AZURE_KEY"]
-api_version = st.secrets["API_VERSION"]
-deployment_name = st.secrets["DEPLOYMENT_NAME"]
+endpoint_url = st.secrets.ENDPOINT_URL
+azure_key = st.secrets.AZURE_KEY
+api_version = st.secrets.API_VERSION
+deployment_name = st.secrets.DEPLOYMENT_NAME
 # headers = {
 
 #     endpoint_url = endpoint_url,
