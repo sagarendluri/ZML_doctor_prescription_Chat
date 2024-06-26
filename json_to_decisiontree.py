@@ -87,7 +87,7 @@ if submit:
           )
 
         retriever = retrieve.auto_retriever(data, embed_model, type="normal", top_k=4)
-        vectordb = ChromaVectorDb(collection_name="my_persistent_collection", persist_directory="./db/chroma/")
+        # vectordb = ChromaVectorDb(collection_name="my_persistent_collection", persist_directory="./db/chroma/")
      
         llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-32k" ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
