@@ -1,2 +1,3 @@
 beyondllm
 streamlit
+llama-index-embeddings-huggingface   
