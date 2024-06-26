@@ -15,7 +15,18 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #         if file.endswith('.pdf'):
 #             paths = pdf_paths + file
 #             pdf.append(paths)
-
+# embedding_models
+endpoint_url = os.getenv('endpoint_url')
+azure_key = os.getenv('azure_key')
+api_version = os.getenv('api_version')
+deployment_name = os.getenv('deployment_name')
+embed_model = AzureAIEmbeddings(
+    endpoint_url="https://marketplace.openai.azure.com/",
+    azure_key="d6d9522a01c74836907af2f3fd72ff85",
+    api_version="2024-02-01",
+    deployment_name="text-embed-marketplace"
+)
+# For LLM
 BASE_URL =  os.getenv('BASE_URL')
 DEPLOYMENT_NAME= os.getenv('DEPLOYMENT_NAME')
 API_KEY = os.getenv('API_KEY')
