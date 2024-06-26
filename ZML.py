@@ -33,7 +33,7 @@ submit=st.button("Get the data")
 
 if submit:
     print(question)
-    pipeline = generator.Generate(question=question, retriever=retriever,system_prompt=system_prompt llm=llm)
+    pipeline = generator.Generate(question=question, retriever=retriever,system_prompt=system_prompt, llm=llm)
     response = pipeline.call()
     st.write(response)
     
