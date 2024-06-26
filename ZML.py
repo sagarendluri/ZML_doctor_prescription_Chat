@@ -4,7 +4,7 @@ from beyondllm import source, retrieve, embeddings, llms, generator
 from beyondllm.embeddings import AzureAIEmbeddings
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm import source
-import base64
+import secrets
 import os
 pdf = [ ]
 pdf_paths = "/Doctor_prescription_files/"
@@ -17,10 +17,13 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
+secret_value = secrets.get_secret("DEPLOYMENT_NAME")
+print(f"deployment_key:{secret_value}")
+
 
 # DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
 # auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
-deployment_name = os.getenv("DEPLOYMENT_NAME")
-print(f"deployment_key:{deployment_name}")
+# deployment_name = os.getenv("DEPLOYMENT_NAME")
+
 
