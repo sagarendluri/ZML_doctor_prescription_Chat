@@ -22,7 +22,7 @@ endpoint_url = os.getenv('ENDPOINT_URL')
 azure_key = os.getenv('AZURE_KEY')
 api_version = os.getenv('API_VERSION')
 deployment_name = os.getenv('DEPLOYMENT_NAME_EMBEDDINGS')
-embed_model = AzureAIEmbeddings( endpoint_url=endpoint_url)# , azure_key=azure_key, api_version=api_version, deployment_name=deployment_name
+embed_model = AzureAIEmbeddings(endpoint_url=endpoint_url)# , azure_key=azure_key, api_version=api_version, deployment_name=deployment_name
 
 # For LLM
 BASE_URL =  os.getenv('BASE_URL')
