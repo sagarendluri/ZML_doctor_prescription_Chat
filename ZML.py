@@ -18,10 +18,12 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_fil
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
 
-endpoint_url = st.secrets.ENDPOINT_URL
-azure_key = st.secrets.AZURE_KEY
-api_version = st.secrets.API_VERSION
-deployment_name = st.secrets.DEPLOYMENT_NAME
+
+
+endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
+azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
+api_version = st.secrets.azure_embeddings_credentials.API_VERSION
+deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 
 
 embed_model = AzureAIEmbeddings(
