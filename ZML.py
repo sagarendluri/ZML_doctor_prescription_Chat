@@ -15,15 +15,11 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #         if file.endswith('.pdf'):
 #             paths = pdf_paths + file
 #             pdf.append(paths)
-embed_model = AzureAIEmbeddings(
-    endpoint_url="https://marketplace.openai.azure.com/",
-    azure_key="d6d9522a01c74836907af2f3fd72ff85",
-    api_version="2024-02-01",
-    deployment_name="text-embed-marketplace"
-)
-BASE_URL = "https://gpt-res.openai.azure.com/"
-DEPLOYMENT_NAME= "gpt-4-32k" 
-API_KEY = "a20bc67dbd7c47ed8c978bbcfdacf930"
+
+BASE_URL =  os.environ["BASE_URL"]
+DEPLOYMENT_NAME= os.environ["DEPLOYMENT_NAME"]
+API_KEY = os.environ["API_KEY"]
+system_prompt = "You should act like an Chatbot...."
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson'), 'Leslie Terry','Danny Smith'))
 st.title("Chat with Prescription Patient data file of 'Bobby Jackson'.")
 data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
@@ -34,9 +30,10 @@ llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-3
 question = st.text_input("Enter your question")
 # question = "what is the Bobby Jackson condition?"
 submit=st.button("Get the data")
+
 if submit:
     print(question)
-    pipeline = generator.Generate(question=question, retriever=retriever, llm=llm)
+    pipeline = generator.Generate(question=question, retriever=retriever,system_prompt=system_prompt llm=llm)
     response = pipeline.call()
     st.write(response)
     
