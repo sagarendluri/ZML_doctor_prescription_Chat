@@ -21,5 +21,6 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
 # auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
-print(f"deployment_key:{DEPLOYMENT_NAME}")
+deployment_name = os.getenv("DEPLOYMENT_NAME")
+print(f"deployment_key:{deployment_name}")
 
