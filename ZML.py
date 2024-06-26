@@ -6,7 +6,7 @@ from beyondllm.llms import AzureOpenAIModel
 from beyondllm import source
 import os
 pdf = [ ]
-pdf_paths = r"/Users/hemasagarendluri1996/data_files/Doctor_prescription_files/"
+pdf_paths = "/Doctor_prescription_files/"
 dir = os.walk(pdf_paths)
 for root, dir,files  in dir:
     for file in files:
