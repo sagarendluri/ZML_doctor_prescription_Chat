@@ -34,10 +34,13 @@ llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-3
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson', 'Leslie Terry','Danny Smith'))
 question = st.text_input("Enter your question")
 # question = "what is the Bobby Jackson condition?"
+
+system_prompt = "You are acting like a chat...."
+
 submit=st.button("Get the data")
 if submit:
     print(question)
-    pipeline = generator.Generate(question=question, retriever=retriever, llm=llm)
+    pipeline = generator.Generate(question=question, retriever=retriever,system_prompt=system_prompt, llm=llm)
     response = pipeline.call()
     st.write(response)
     
