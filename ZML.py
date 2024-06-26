@@ -22,13 +22,12 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 # azure_key = os.getenv('AZURE_KEY')
 # api_version = os.getenv('API_VERSION')
 
-endpoint_url="https://marketplace.openai.azure.com/",
-azure_key="d6d9522a01c74836907af2f3fd72ff85",
-api_version="2024-02-01",
-deployment_name_embeddings = "text-embed-marketplace" #os.getenv('DEPLOYMENT_NAME_EMBEDDINGS')
-
-print(endpoint_url, azure_key, api_version, deployment_name_embeddings)
-embed_model = AzureAIEmbeddings(endpoint_url=endpoint_url, azure_key=azure_key, api_version=api_version, deployment_name=deployment_name_embeddings)
+embed_model = AzureAIEmbeddings(
+    endpoint_url="https://marketplace.openai.azure.com/",
+    azure_key="d6d9522a01c74836907af2f3fd72ff85",
+    api_version="2024-02-01",
+    deployment_name_embeddings="text-embed-marketplace"
+)
 
 # For LLM
 BASE_URL =  os.getenv('BASE_URL')
