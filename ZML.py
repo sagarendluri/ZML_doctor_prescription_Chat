@@ -34,7 +34,7 @@ llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-3
 
 
 
-option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson', 'Leslie Terry','Danny Smith'))
+# option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson', 'Leslie Terry','Danny Smith'))
 question = st.text_input("Enter your question")
 # question = "what is the Bobby Jackson condition?"
 submit=st.button("Get the data")
