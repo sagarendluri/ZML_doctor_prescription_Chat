@@ -44,30 +44,6 @@ if submit:
     response = pipeline.call()
     st.write(response)
     
-# st.caption("Upload a PDF document and enter a question to query information from the document.")
-    # return response
-# question = "what is the Bobby Jackson condition?"
-
-# question = st.text_input("Enter your question")
-# response = llmmodels(question)
-# print(response)
-# question = "How many Patience names do you have? Only return their name with single quotes "
-# pipeline = generator.Generate(question=question, retriever=retriever, llm=llm)
-# patient_name = pipeline.call()
-
-# st.write('You selected:', option)
-
-# st.title("Chat with ZML file Patient data file.")
-
-# user_input = st.text_input("Query:", placeholder="Talk to your medical records here (:", key='input')
-
-# if user_input is not None:    
-#     print(user_input)
-# response = llmmodels(user_input)
-# st.write(response)
-    
-# st.caption("Upload a PDF document and enter a question to query information from the document.")
-
 
 
 
