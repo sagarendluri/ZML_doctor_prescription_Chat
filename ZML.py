@@ -18,14 +18,14 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_fil
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
 embed_model = AzureAIEmbeddings(
-    endpoint_url="https://marketplace.openai.azure.com/",
-    azure_key="d6d9522a01c74836907af2f3fd72ff85",
-    api_version="2024-02-01",
-    deployment_name="text-embed-marketplace"
+    endpoint_url = st.secrets["endpoint_url"]
+    azure_key = st.secrets["azure_key"],
+    api_version= st.secrets["api_version"],
+    deployment_name=st.secrets[deployment_name]
 )
-BASE_URL = "https://gpt-res.openai.azure.com/"
-DEPLOYMENT_NAME= "gpt-4-32k" 
-API_KEY = "a20bc67dbd7c47ed8c978bbcfdacf930"
+BASE_URL = st.secrets[BASE_URL]
+DEPLOYMENT_NAME= st.secrets[DEPLOYMENT_NAME] 
+API_KEY = st.secrets[API_KEY]
 
 data = source.fit(path=pdfs, dtype="pdf",chunk_size=512,chunk_overlap=20)
 # text_embedding = embed_model.embed_text(str(data))
