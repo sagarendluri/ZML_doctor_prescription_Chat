@@ -9,7 +9,7 @@ import os
 pdf = [ ]
 pdf_paths = "/Doctor_prescription_files/"
 
-pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_files/Prescription_3.pdf', 'Doctor_prescription_files/Prescription_2.pdf']
+pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_files/Prescription_3.pdf', 'Doctor_prescription_files/Prescription_2.pdf']
 # dir = os.walk(pdf_paths)
 # for root, dir,files  in dir:
 #     for file in files:
