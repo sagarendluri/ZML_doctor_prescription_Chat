@@ -18,7 +18,7 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf', 'Doctor_prescription_fil
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
 
-# print(st.secrets[endpoint_url])
+print(st.secrets[endpoint_url])
 # headers = {
 
 #     endpoint_url = st.secrets[endpoint_url],
