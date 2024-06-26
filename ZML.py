@@ -16,10 +16,10 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 # embedding_models
-endpoint_url = os.getenv('endpoint_url')
-azure_key = os.getenv('azure_key')
-api_version = os.getenv('api_version')
-deployment_name = os.getenv('deployment_name')
+endpoint_url = os.getenv('ENDPOINT_URL')
+azure_key = os.getenv('AZURE_KEY')
+api_version = os.getenv('API_VERSION')
+deployment_name = os.getenv('DEPLOYMENT_NAME_EMBEDDINGS')
 embed_model = AzureAIEmbeddings(
     endpoint_url=endpoint_url ,
     azure_key=azure_key,
