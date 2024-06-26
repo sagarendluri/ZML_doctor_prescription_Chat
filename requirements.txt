@@ -3,6 +3,6 @@ streamlit
 llama-index-embeddings-huggingface   
 llama-index-embeddings-azure_openai   
 llama_index.vector_stores.chroma
+pm4py
 graphviz
 chromadb
-pm4py
