@@ -21,7 +21,8 @@ secret_value = secrets.get_secret("DEPLOYMENT_NAME")
 print(f"deployment_key:{secret_value}")
 
 
-# DEPLOYMENT_NAME= os.environ['DEPLOYMENT_NAME']
+DEPLOYMENT_NAME= os.environ.get['DEPLOYMENT_NAME']
+print(DEPLOYMENT_NAME)
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
 # auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
 # deployment_name = os.getenv("DEPLOYMENT_NAME")
