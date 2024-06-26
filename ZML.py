@@ -1,4 +1,4 @@
-import os
+(import os
 import streamlit as st
 from beyondllm import source, retrieve, embeddings, llms, generator
 from beyondllm.embeddings import AzureAIEmbeddings
@@ -21,7 +21,7 @@ st.title("Chat with ZML file Patient data file.")
 # print(f"deployment_key:{secret_value}")
 
 
-deployment = os.environ.get['deployment_name']
+deployment = os.environ.get('deployment_name')
 print(deployment)
 # auth_header_encoded = base64.b64decode(f"{DEPLOYMENT_NAME}".encode("ascii"))
 # auth_header = f"Basic{auth_header_encoded.decode('ascii')}"
