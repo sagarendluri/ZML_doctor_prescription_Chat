@@ -17,8 +17,8 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 st.title("Chat with ZML file Patient data file.")
-secret_value = secrets.get_secret("DEPLOYMENT_NAME")
-print(f"deployment_key:{secret_value}")
+# secret_value = secrets.get_secret("DEPLOYMENT_NAME")
+# print(f"deployment_key:{secret_value}")
 
 
 DEPLOYMENT_NAME= os.environ.get['DEPLOYMENT_NAME']
