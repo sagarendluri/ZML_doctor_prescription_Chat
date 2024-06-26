@@ -9,7 +9,23 @@ from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
 import mglearn as mglearn
 mglearn.plots.plot_animal_tree()
+import subprocess
+import os 
+print('current PATH',os.environ['PATH']) 
 
+process=subprocess.Popen(['which dot'], shell=True,
+                           stdout=subprocess.PIPE, 
+                           stderr=subprocess.PIPE)
+
+out, err = process.communicate()
+errcode = process.returncode
+
+print(out, err, errcode) 
+
+gv_path=''.join(out.decode().strip().rsplit('/',maxsplit=1)[:-1])
+
+if gv_path:
+    os.environ['PATH']=os.environ['PATH']+':'+ gv_path
 
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
