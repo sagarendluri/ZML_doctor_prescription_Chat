@@ -16,8 +16,8 @@ pdfs = ['Doctor_prescription_files/Prescription_1.pdf']#, 'Doctor_prescription_f
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 
-BASE_URL =  os.environ[BASE_URL]
-DEPLOYMENT_NAME= os.environ[DEPLOYMENT_NAME]
+BASE_URL =  os.environ["BASE_URL"]
+DEPLOYMENT_NAME= os.environ["DEPLOYMENT_NAME"]
 API_KEY = os.environ["API_KEY"]
 system_prompt = "You should act like an Chatbot...."
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson'), 'Leslie Terry','Danny Smith'))
