@@ -7,8 +7,6 @@ from graphviz import Digraph
 import streamlit as st
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
-import mglearn as mglearn
-mglearn.plots.plot_animal_tree()
 import subprocess
 import os 
 print('current PATH',os.environ['PATH']) 
