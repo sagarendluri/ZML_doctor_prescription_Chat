@@ -34,6 +34,7 @@ BASE_URL =  os.getenv('BASE_URL')
 DEPLOYMENT_NAME= os.getenv('DEPLOYMENT_NAME')
 API_KEY = os.getenv('API_KEY')
 
+print(BASE_URL, DEPLOYMENT_NAME, API_KEY) 
 system_prompt = "You should act like an Chatbot...."
 # option = st.selectbox( 'Please Select the Patient name?', ('Bobby Jackson'), 'Leslie Terry','Danny Smith'))
 st.title("Chat with Prescription Patient data file of 'Bobby Jackson'.")
