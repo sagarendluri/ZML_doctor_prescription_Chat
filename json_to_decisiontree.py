@@ -67,7 +67,7 @@ if submit:
     Output is the JSON response follow this pattern: Do not change everytime Json output
 
     This is JSON output Example, add more questions in this formate only. 
-        {
+    {
         "Question1": ,
         "Yes": {
             "Result": ,
