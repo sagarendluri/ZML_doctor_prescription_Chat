@@ -62,7 +62,7 @@ def main():
             st.session_state['history'] = []
 
     if 'generated' not in st.session_state:
-      st.session_state['generated'] = ["Ask your questions "]
+      st.session_state['generated'] = ["Ask your question"]
 
     if 'past' not in st.session_state:
         st.session_state['past'] = ["Welcome!"]
