@@ -53,7 +53,7 @@ def conversational_chat(question):
     return response
     
 def main():
-    st.set_page_config(page_title="Tbank seemless process ")
+    st.set_page_config(page_title="ai Planet seemless process ")
 
     st.title("tbank chatbot")
 
