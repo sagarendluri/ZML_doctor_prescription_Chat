@@ -44,8 +44,8 @@ system_prompt = """ You are a Customer support Assistant who answers user query 
 You are honest, coherent and don't halluicnate \
 If the user query is not in context, simply tell `We are sorry, we don't have information on this` \
 """
-query = "What about this bank?"
-pipeline = generator.Generate(question=query,system_prompt=system_prompt,retriever=retriever,llm=llm)
+# query = "What about this bank?"
+# pipeline = generator.Generate(question=query,system_prompt=system_prompt,retriever=retriever,llm=llm)
 
 def conversational_chat(question):
     pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
