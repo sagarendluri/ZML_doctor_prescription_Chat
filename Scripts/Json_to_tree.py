@@ -1,7 +1,4 @@
-import json
-import networkx as nx
-import matplotlib.pyplot as plt
-from networkx.drawing.nx_pydot import graphviz_layout
+
 # Function to recursively build the tree graph from the JSON
 def json_to_dot(graph, node_id, parent_node, parent_label):
             if isinstance(parent_node, dict):
