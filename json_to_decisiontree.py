@@ -100,11 +100,17 @@ if submit:
      
         llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-32k" ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
-        response = pipeline.call()
-
-        
-        output_path = create_decision_tree_image(response)
-        print(f"Decision tree image saved at: {output_path}")
+        decision_tree_json = pipeline.call()
+        response = json.loads(decision_tree_json)
+        # Create a new graph
+        dot = graphviz.Digraph(comment='Decision Tree')
+        # Add the root node
+        dot.node('Root', 'Start', shape='ellipse', style='filled', fillcolor='lightyellow')
+        # Build the DOT format
+        json_to_dot(dot, "Root", response, "Root")
+        # Render and display the graph using Graphviz engine
+        dot.format = 'png'
+        dot.render('decision_tree', view=True)
         
         import streamlit as st
         with st.chat_message(""):
