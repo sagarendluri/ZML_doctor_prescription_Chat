@@ -14,7 +14,7 @@ from streamlit_chat import message
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 # print(pdf)
-pdfs = ['tbank/About_page_tbank.pdf', 'tbank/About_page_tbank.pdf', 'tbank/About_page_tbank.pdf']
+pdfs = ['tbank/About_page_tbank.pdf', 'tbank/About_page_tbank.pdf']#, 'tbank/About_page_tbank.pdf']
 
 
 data = source.fit(path=pdfs, dtype="pdf", chunk_size=512,chunk_overlap=0)
@@ -29,7 +29,7 @@ API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
 embed_model = embeddings.AzureAIEmbeddings(
                 endpoint_url=endpoint_url,
                 azure_key=api_version,
-                api_version="2024-02-01",
+                api_version=api_version,
                 deployment_name=deployment_name)
 
 
