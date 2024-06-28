@@ -14,7 +14,7 @@ pdf = [ ]
 #             paths = pdf_paths + file
 #             pdf.append(paths)
 # print(pdf)
-pdfs = ['tbank/About_page_tbank.pdf', 'tbank/Need_help.pdf', 'tbank/Resources.pdf']
+pdfs = ['ZML_doctor_prescription_Chat/tbank/About_page_tbank.pdf', 'ZML_doctor_prescription_Chat/tbank/About_page_tbank.pdff', 'ZML_doctor_prescription_Chat/tbank/About_page_tbank.pdf']
 
 
 data = source.fit(path=pdf, dtype="pdf", chunk_size=512,chunk_overlap=0)
