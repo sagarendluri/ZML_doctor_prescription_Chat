@@ -62,6 +62,7 @@ def main():
             st.session_state['history'] = []
 
     if 'generated' not in st.session_state:
+      True
         # st.session_state['generated'] = [""]
 
     if 'past' not in st.session_state:
