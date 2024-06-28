@@ -62,7 +62,7 @@ def main():
             st.session_state['history'] = []
 
     if 'generated' not in st.session_state:
-        st.session_state['generated'] = ["uploaded_file.name"]
+        st.session_state['generated'] = [""]
 
     if 'past' not in st.session_state:
         st.session_state['past'] = ["Welcome!"]
