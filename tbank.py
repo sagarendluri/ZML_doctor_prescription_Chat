@@ -6,7 +6,7 @@ from beyondllm import embeddings
 from streamlit_chat import message
 
 pdf = [ ]
-pdf_paths = r"/Users/hemasagarendluri1996/data_files/tbank/"
+pdf_paths = r"tbank/"
 dir = os.walk(pdf_paths)
 for root, dir,files  in dir:
     for file in files:
