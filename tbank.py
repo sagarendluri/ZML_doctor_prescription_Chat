@@ -6,14 +6,16 @@ from beyondllm import embeddings
 from streamlit_chat import message
 
 pdf = [ ]
-pdf_paths = "/tbank/"
-dir = os.walk(pdf_paths)
-for root, dir,files  in dir:
-    for file in files:
-        if file.endswith('.pdf'):
-            paths = pdf_paths + file
-            pdf.append(paths)
-print(pdf)
+# pdf_paths = "/tbank/"
+# dir = os.walk(pdf_paths)
+# for root, dir,files  in dir:
+#     for file in files:
+#         if file.endswith('.pdf'):
+#             paths = pdf_paths + file
+#             pdf.append(paths)
+# print(pdf)
+pdfs = ['tbank/About_page_tbank.pdf', 'tbank/Need_help.pdf', 'tbank/Resources.pdf.pdf']
+
 
 data = source.fit(path=pdf, dtype="pdf", chunk_size=512,chunk_overlap=0)
 
