@@ -33,30 +33,6 @@ deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
 # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
-
-
-
-def json_to_decision_tree(json_data, graph=None, parent_name=None, node_name=None):
-    if graph is None:
-        graph = Digraph(format='png')
-        graph.attr('node', shape='box')
-
-    if isinstance(json_data, dict):
-        for key, value in json_data.items():
-            if isinstance(value, dict):
-                new_node_name = f'{node_name}_{key}' if node_name else key
-                graph.node(new_node_name, key)
-                if parent_name:
-                    graph.edge(parent_name, new_node_name)
-                json_to_decision_tree(value, graph, new_node_name, new_node_name)
-            else:
-                leaf_node_name = f'{node_name}_{key}' if node_name else key
-                graph.node(leaf_node_name, f'{key}: {value}', shape='ellipse')
-                if parent_name:
-                    graph.edge(parent_name, leaf_node_name)
-    return graph
-
-
 st.title("Chat with document")
 
 st.text("Enter API Key")
