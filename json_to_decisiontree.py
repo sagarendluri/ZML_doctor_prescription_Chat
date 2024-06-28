@@ -102,14 +102,11 @@ if submit:
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
         response = pipeline.call()
 
-        # Convert JSON data to decision tree diagram
-        json_tree = json_to_decision_tree(response)
-        json_tree.render('decision_tree')
-
-        with open("decision_tree.png", "rb") as file:
-            btn = st.download_button(
-                    label="Download image",
-                    data=file,
-                    file_name="decision_tree.png",
-                    mime="image/png"
-                )
+        
+        output_path = create_decision_tree_image(response)
+        print(f"Decision tree image saved at: {output_path}")
+        
+        import streamlit as st
+        with st.chat_message(""):
+            st.write("")
+            st.image('2decision_tree.png', caption='tree from json')
