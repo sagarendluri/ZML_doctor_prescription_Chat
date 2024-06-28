@@ -9,6 +9,7 @@ from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
 import subprocess
 import os 
+from Scripts.Json_to_tree import create_decision_tree_image
 print('current PATH',os.environ['PATH']) 
 
 process=subprocess.Popen(['which dot'], shell=True,
