@@ -1,15 +1,15 @@
-from beyondllm import source,retrieve,embeddings,llms,generator
 import os
-from getpass import getpass
-from beyondllm.vectordb import ChromaVectorDb
 import json
-from graphviz import Digraph
+import subprocess
 import streamlit as st
+from getpass import getpass
+from graphviz import Digraph
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
-import subprocess
-import os 
 from Scripts.Json_to_tree import create_decision_tree_image
+from beyondllm import source,retrieve,embeddings,llms,generator
+
+
 print('current PATH',os.environ['PATH']) 
 
 process=subprocess.Popen(['which dot'], shell=True,
