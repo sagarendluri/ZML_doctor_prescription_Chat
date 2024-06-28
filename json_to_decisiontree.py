@@ -65,6 +65,33 @@ if submit:
     [Continue this structure for as many questions as needed, ensuring each question branches into Yes/No answers and provides appropriate results based on the Council regulations.]
     Please continue this format for as many questions as needed, ensuring each question follows the same structure.
     Output is the JSON response follow this pattern: Do not change everytime Json output
+
+    This is JSON output Example, add more questions in this formate only. 
+        {
+        "Question1": ,
+        "Yes": {
+            "Result": ,
+            "Council regulations": 
+        },
+        "No": {
+            "Question2": ,
+            "Yes": {
+                "Result":,
+                "Council regulations": 
+            },
+            "No": {
+                "Question3": ,
+                "Yes": {
+                    "Result": ,
+                    "Council regulations":
+                },
+                "No": {
+                    "Result": ,
+                    "Council regulations": 
+                }
+            }
+        }
+    }
     Additional Instructions:
     
     Analyze the entire document to identify all relevant rules and exceptions.
