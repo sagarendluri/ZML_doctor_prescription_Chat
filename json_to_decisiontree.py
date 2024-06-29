@@ -130,7 +130,7 @@ if submit:
         decision_tree_json = pipeline.call()
         response = json.loads(decision_tree_json)
         # Create a new graph
-        dot = graphviz.Digraph(comment='Decision Tree')
+        dot = Digraph(comment='Decision Tree')
         # Add the root node
         dot.node('Root', 'Start', shape='ellipse', style='filled', fillcolor='lightyellow')
         # Build the DOT format
