@@ -10,21 +10,21 @@ from Scripts.Json_to_tree import json_to_dot
 from beyondllm import source,retrieve,embeddings,llms,generator
 
 
-print('current PATH',os.environ['PATH']) 
+# print('current PATH',os.environ['PATH']) 
 
-process=subprocess.Popen(['which dot'], shell=True,
-                           stdout=subprocess.PIPE, 
-                           stderr=subprocess.PIPE)
+# process=subprocess.Popen(['which dot'], shell=True,
+#                            stdout=subprocess.PIPE, 
+#                            stderr=subprocess.PIPE)
 
-out, err = process.communicate()
-errcode = process.returncode
+# out, err = process.communicate()
+# errcode = process.returncode
 
-print(out, err, errcode) 
+# print(out, err, errcode) 
 
-gv_path=''.join(out.decode().strip().rsplit('/',maxsplit=1)[:-1])
+# gv_path=''.join(out.decode().strip().rsplit('/',maxsplit=1)[:-1])
 
-if gv_path:
-    os.environ['PATH']=os.environ['PATH']+':'+ gv_path
+# if gv_path:
+#     os.environ['PATH']=os.environ['PATH']+':'+ gv_path
 
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
