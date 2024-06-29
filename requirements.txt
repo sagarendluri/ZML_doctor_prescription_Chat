@@ -4,7 +4,5 @@ streamlit-chat
 llama-index-embeddings-huggingface   
 llama-index-embeddings-azure_openai   
 llama_index.vector_stores.chroma
-graphviz
-networkx
 matplotlib
 chromadb
