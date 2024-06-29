@@ -142,4 +142,4 @@ if submit:
         import streamlit as st
         with st.chat_message(""):
             st.write("")
-            st.image('2decision_tree.png', caption='tree from json')
+            st.image('decision_tree.png', caption='tree from json')
