@@ -103,6 +103,13 @@ def main():
             for i in range(len(st.session_state['generated'])):
                 message(st.session_state["past"][i], is_user=True)
                 message(st.session_state["generated"][i], key=str(i))
+    
+    st.write("""
+    # Redirecting...
+    <script type="text/javascript">
+        window.location.href = 'https://tbankaichatbot-aiplanet.streamlit.app/';
+    </script>
+    """, unsafe_allow_html=True)
                 
 if __name__ == '__main__':
     main()
