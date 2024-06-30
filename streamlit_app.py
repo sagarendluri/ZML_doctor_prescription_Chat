@@ -146,7 +146,7 @@ if submit:
         graph.add_node(root_node)
         
         # Build the graph from the JSON structure
-        json_to_graph(graph, response, "Root")
+        json_to_tree_image(graph, response, "Root")
         
         # Save the graph as a PNG image
         graph.write_png('2decision_tree.png')
