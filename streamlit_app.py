@@ -46,7 +46,7 @@ st.title("respect us decision tree generator")
 # api_key = st.text_input("API Key:", type="password")
 # os.environ['OPENAI_API_KEY'] = api_key
 
-st.caption("Upload a PDF document to get information from the document.")
+
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
 submit=st.button("Get the data")
 if submit:
