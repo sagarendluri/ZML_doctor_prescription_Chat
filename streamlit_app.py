@@ -29,6 +29,9 @@ if gv_path:
 import os
 os.environ["PATH"] += os.pathsep + 'Graphiviz/Graphviz-11.0.0-win64/bin/bin/'
 os.environ["PATH"] += os.pathsep + "Graphviz2.38/bin/dot.exe"
+import subprocess
+subprocess.call(["xdg-open", "dot.exe"])
+
 
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
