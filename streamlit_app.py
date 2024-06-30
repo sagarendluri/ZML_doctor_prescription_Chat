@@ -50,7 +50,6 @@ st.title("Respectus decision tree generator")
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
 submit=st.button("Generate results")
 if submit:
-
     question = "Give Decision taken in the document"
     system_prompt = '''You are a business analyst with extensive knowledge of legal documents and regulatory documentation.
     Your expertise is in helping people understand and extract key information from such documents. 
@@ -59,46 +58,28 @@ if submit:
     Response Structure:
     Please go through the document once: 
     Create a decision tree in JSON format based on the following structure:
-    Write a question and question should be two response like yes or no. if yes it has fallowing answers or other question 
-        - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
-        - If Yes, proceed to the next question2.( by giving some link to the next question not direct to next question)
-
-    Next question based on the previous question outcome.
-        - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
-        - If Yes, proceed to the next question.
-
-    Next- question based on the previous question outcome and create like this as many as you can.
-    In simple terms - flow chat if conditons.
-    [Continue this structure for as many questions as needed, ensuring each question branches into Yes/No answers and provides appropriate results based on the Council regulations.]
-    Please continue this format for as many questions as needed, ensuring each question follows the same structure.
-    Output is the JSON response follow this pattern: Do not change everytime Json output
-
-    This is JSON output Example, add more questions in this formate only. 
     {
-        "Question1": ,
-        "No": {
-            "Result": ,
-            "Council regulations": 
-        },
+      "Questions": {
+        "Question1": "Your first question?",
         "Yes": {
-            "Question2": ,
-            "No": {
-                "Result":,
-                "Council regulations": 
-            },
-            "Yes": {
-                "Question3": ,
-                "No": {
-                    "Result": ,
-                    "Council regulations":
-                },
-                "Yes": {
-                    "Result": ,
-                    "Council regulations": 
-                }
-            }
+          "Question2": "Your next question if yes?",
+          "Yes": {
+            "Result": "Not restricted",
+            "Source": "Council Decision source for this result"
+          },
+          "No": {
+            "Result": "Prohibited",
+            "Source": "Council Decision source for this result"
+          }
+        },
+        "No": {
+          "Result": "Not restricted",
+          "Source": "Council Decision source for this result"
         }
+      }
     }
+
+
     Additional Instructions:
     
     Analyze the entire document to identify all relevant rules and exceptions.
