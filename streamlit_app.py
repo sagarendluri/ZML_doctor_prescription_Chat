@@ -40,13 +40,11 @@ deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
 # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
-st.title("Upload document to see tree output ")
+st.title("respect us decision tree generator")
 
-st.text("Enter API Key")
 
 # api_key = st.text_input("API Key:", type="password")
 # os.environ['OPENAI_API_KEY'] = api_key
-st.success("API Key entered successfully!")
 
 st.caption("Upload a PDF document to get information from the document.")
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
