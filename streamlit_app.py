@@ -63,9 +63,11 @@ if submit:
         - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
         - If Yes, proceed to the next question2.( by giving some link to the next question not direct to next question)
 
-    2. Next question based on the previous question outcome.
+    Next question based on the previous question outcome.
         - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
         - If Yes, proceed to the next question.
+
+    Next- question based on the previous question outcome and create like this as many as you can.
     In simple terms - flow chat if conditons.
     [Continue this structure for as many questions as needed, ensuring each question branches into Yes/No answers and provides appropriate results based on the Council regulations.]
     Please continue this format for as many questions as needed, ensuring each question follows the same structure.
