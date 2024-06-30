@@ -10,7 +10,7 @@ from Scripts.Json_to_tree import json_to_dot
 from beyondllm import source,retrieve,embeddings,llms,generator
 
 
-print('current PATH',os.environ['PATH']) 
+# print('current PATH',os.environ['PATH']) 
 
 process=subprocess.Popen(['which dot'], shell=True,
                            stdout=subprocess.PIPE, 
