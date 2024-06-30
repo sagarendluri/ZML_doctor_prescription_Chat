@@ -74,23 +74,23 @@ if submit:
     This is JSON output Example, add more questions in this formate only. 
     {
         "Question1": ,
-        "Yes": {
+        "No": {
             "Result": ,
             "Council regulations": 
         },
-        "No": {
+        "Yes": {
             "Question2": ,
-            "Yes": {
+            "No": {
                 "Result":,
                 "Council regulations": 
             },
-            "No": {
+            "Yes": {
                 "Question3": ,
-                "Yes": {
+                "No": {
                     "Result": ,
                     "Council regulations":
                 },
-                "No": {
+                "Yes": {
                     "Result": ,
                     "Council regulations": 
                 }
