@@ -29,7 +29,7 @@ from beyondllm import source,retrieve,embeddings,llms,generator
 
 import os
 os.environ["PATH"] += os.pathsep + 'Graphiviz/bin/bin/'
-os.environ["PATH"] += os.pathsep + "Graphviz/bin/dot.exe"
+os.environ["PATH"] += os.pathsep + 'Graphviz/bin/dot.exe'
 
 
 
