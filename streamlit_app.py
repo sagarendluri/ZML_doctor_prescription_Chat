@@ -145,22 +145,22 @@ if submit:
         
         # Build the graph from the JSON structure
         json_to_tree_image(graph, response, "Root")
-        
+        image_name = uploaded_file.name+'_tree.png'
         # Save the graph as a PNG image
-        graph.write_png(uploaded_file.name+'_tree.png')
+        graph.write_png(image_name)
         
         # # Display the graph
         # from PIL import Image
         # img = Image.open(uploaded_file.name+'_tree.png')
         # img.show()
 
-        with open("uploaded_file.name+'_tree.png'", "rb") as file:
+        with open(image_name, "rb") as file:
             btn = st.download_button(
                     label="Download image",
                     data=file,
-                    file_name="uploaded_file.name+'_tree.png'",
+                    file_name=image_name,
                     mime="image/png"
                   )
         with st.chat_message(""):
             st.write("")
-            st.image(uploaded_file.name+'_tree.png', caption="tree_from_json")
+            st.image(image_name, caption="tree_from_json")
