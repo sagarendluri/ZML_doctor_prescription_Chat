@@ -57,8 +57,8 @@ if submit:
     Your task is to extract the rules and exceptions in a way that enables the creation of a decision tree, facilitating integration into the proper flow.
     Legal Document Context: {context}
     Response Structure:
+    Please go through the document once: 
     Create a decision tree in JSON format based on the following structure:
-
     Write a question and question should be two response like yes or no. if yes it has fallowing answers or other question 
         - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
         - If Yes, proceed to the next question2.( by giving some link to the next question not direct to next question)
