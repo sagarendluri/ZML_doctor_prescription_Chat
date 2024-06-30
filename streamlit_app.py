@@ -3,10 +3,10 @@ import json
 import subprocess
 import streamlit as st
 from getpass import getpass
-from graphviz import Digraph
+# from graphviz import Digraph
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
-from Scripts.Json_to_tree import json_to_dot
+from Scripts.Json_to_tree import json_to_dot, 
 from beyondllm import source,retrieve,embeddings,llms,generator
 from PIL import Image
 
@@ -27,9 +27,9 @@ from PIL import Image
 # if gv_path:
 #     os.environ['PATH']=os.environ['PATH']+':'+ gv_path
 
-import os
-os.environ["PATH"] += os.pathsep + 'Graphiviz/bin/bin/'
-os.environ["PATH"] += os.pathsep + 'Graphviz/bin/dot.exe'
+# import os
+# os.environ["PATH"] += os.pathsep + 'Graphiviz/bin/bin/'
+# os.environ["PATH"] += os.pathsep + 'Graphviz/bin/dot.exe'
 
 
 
@@ -138,16 +138,26 @@ if submit:
         response = json.loads(decision_tree_json)
         # Function to recursively create nodes and edges in the grap
         # Create a new graph
-        dot = Digraph(comment='Decision Tree')
+        # Create a new directed graph
+        graph = pydot.Dot(graph_type='digraph')
+        
         # Add the root node
-        dot.node('Root', 'Start', shape='ellipse', style='filled', fillcolor='lightyellow')
-        # Build the DOT format
-        json_to_dot(dot, "Root", response, "Root")
-        # Render and display the graph using Graphviz engine
-        dot.format = 'png'
-        dot.render('decision_tree', view=True)
+        root_node = pydot.Node('Root', label='Start', shape='ellipse', style='filled', fillcolor='lightyellow')
+        graph.add_node(root_node)
+        
+        # Build the graph from the JSON structure
+        json_to_graph(graph, decision_tree_json, "Root")
+        
+        # Save the graph as a PNG image
+        graph.write_png('decision_tree.png')
+        
+        # # Display the graph
+        # from PIL import Image
+        # img = Image.open('decision_tree.png')
+        # img.show()
+
         
         import streamlit as st
         with st.chat_message(""):
             st.write("")
-            st.image('decision_tree.png', caption='tree from json')
+            st.image('2decision_tree.png', caption='tree from json')
