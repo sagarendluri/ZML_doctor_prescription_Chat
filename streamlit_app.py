@@ -40,7 +40,7 @@ deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
 # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
 API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
-st.title("respect us decision tree generator")
+st.title("respectus decision tree generator")
 
 
 # api_key = st.text_input("API Key:", type="password")
