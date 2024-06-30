@@ -163,4 +163,4 @@ if submit:
                   )
         with st.chat_message(""):
             st.write("")
-            st.image('uploaded_file.name+'_tree.png', caption='tree from json')
+            st.image(uploaded_file.name+'_tree.png', caption="tree_from_json")
