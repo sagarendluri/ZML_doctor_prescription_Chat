@@ -8,7 +8,7 @@ from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
 from Scripts.Json_to_tree import json_to_dot
 from beyondllm import source,retrieve,embeddings,llms,generator
-
+from PIL import Image
 
 
 # print('current PATH',os.environ['PATH']) 
