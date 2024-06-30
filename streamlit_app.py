@@ -149,7 +149,7 @@ if submit:
         json_to_graph(graph, decision_tree_json, "Root")
         
         # Save the graph as a PNG image
-        graph.write_png('decision_tree.png')
+        graph.write_png('2decision_tree.png')
         
         # # Display the graph
         # from PIL import Image
