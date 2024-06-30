@@ -154,8 +154,13 @@ if submit:
         # img = Image.open(uploaded_file.name+'_tree.png')
         # img.show()
 
-        
-        import streamlit as st
+        with open("uploaded_file.name+'_tree.png'", "rb") as file:
+            btn = st.download_button(
+                    label="Download image",
+                    data=file,
+                    file_name="uploaded_file.name+'_tree.png'",
+                    mime="image/png"
+                  )
         with st.chat_message(""):
             st.write("")
-            st.image('2decision_tree.png', caption='tree from json')
+            st.image('uploaded_file.name+'_tree.png', caption='tree from json')
