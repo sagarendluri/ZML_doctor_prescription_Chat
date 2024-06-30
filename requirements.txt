@@ -7,3 +7,4 @@ llama_index.vector_stores.chroma
 graphviz
 matplotlib
 chromadb
+xdg-utils
