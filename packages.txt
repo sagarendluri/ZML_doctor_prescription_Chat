@@ -1,1 +1,1 @@
-graphviz
+apt-get install graphviz
