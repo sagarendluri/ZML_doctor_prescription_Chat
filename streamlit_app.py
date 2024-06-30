@@ -150,14 +150,14 @@ if submit:
                         graph.add_node(node)
                         edge = pydot.Edge(parent_label, question_id)
                         graph.add_edge(edge)
-                        json_to_graph(graph, value, question_id)
+                        json_to_tree_image(graph, value, question_id)
                     elif key in ["Yes", "No"]:
                         option_label = parent_label + "_" + key
                         node = pydot.Node(option_label, label=key, shape='box', style='filled', fillcolor='lightgreen' if key == "Yes" else 'lightcoral')
                         graph.add_node(node)
                         edge = pydot.Edge(parent_label, option_label)
                         graph.add_edge(edge)
-                        json_to_graph(graph, value, option_label)
+                        json_to_tree_image(graph, value, option_label)
                     elif key == "Result":
                         result_label = parent_label + "_" + key
                         result_str = f"{key}: {value}\nCouncil regulations: {parent_node['Council regulations']}"
