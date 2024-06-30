@@ -48,7 +48,7 @@ st.title("respect us decision tree generator")
 
 
 uploaded_file = st.file_uploader("Choose a PDF file", type='pdf')
-submit=st.button("Get the data")
+submit=st.button("Generate results")
 if submit:
 
     question = "Give Decision taken in the document"
