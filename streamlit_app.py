@@ -1,15 +1,38 @@
 import os
 import json
+import pydot
 import subprocess
 import streamlit as st
 from getpass import getpass
-# from graphviz import Digraph
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
-from Scripts.Json_to_tree import json_to_dot, json_to_tree_image
 from beyondllm import source,retrieve,embeddings,llms,generator
-import pydot
-
+# Script of json to tree using pydot module
+def json_to_tree_image(graph, parent_node, parent_label):
+    if isinstance(parent_node, dict):
+        for key, value in parent_node.items():
+            if key.startswith("Question"):
+                question_id = parent_label.replace(" ", "_") + "_" + key
+                label_text = "\n".join(value[i:i+30] for i in range(0, len(value), 30))
+                node = pydot.Node(question_id, label=label_text, shape='box', style='filled', fillcolor='lightblue')
+                graph.add_node(node)
+                edge = pydot.Edge(parent_label, question_id)
+                graph.add_edge(edge)
+                json_to_tree_image(graph, value, question_id)
+            elif key in ["Yes", "No"]:
+                option_label = parent_label + "_" + key
+                node = pydot.Node(option_label, label=key, shape='box', style='filled', fillcolor='lightgreen' if key == "Yes" else 'lightcoral')
+                graph.add_node(node)
+                edge = pydot.Edge(parent_label, option_label)
+                graph.add_edge(edge)
+                json_to_tree_image(graph, value, option_label)
+            elif key == "Result":
+                result_label = parent_label + "_" + key
+                result_str = f"{key}: {value}\nCouncil regulations: {parent_node['Council regulations']}"
+                node = pydot.Node(result_label, label=result_str, shape='box', style='filled', fillcolor='lightgrey')
+                graph.add_node(node)
+                edge = pydot.Edge(parent_label, result_label)
+                graph.add_edge(edge)
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
 api_version = st.secrets.azure_embeddings_credentials.API_VERSION
@@ -126,11 +149,11 @@ if submit:
         json_to_tree_image(graph, response, "Root")
         
         # Save the graph as a PNG image
-        graph.write_png('2decision_tree.png')
+        graph.write_png(uploaded_file.name+'_tree.png')
         
         # # Display the graph
         # from PIL import Image
-        # img = Image.open('decision_tree.png')
+        # img = Image.open(uploaded_file.name+'_tree.png')
         # img.show()
 
         
