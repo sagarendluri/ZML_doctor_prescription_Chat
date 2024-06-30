@@ -6,7 +6,7 @@ from getpass import getpass
 # from graphviz import Digraph
 from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
-from Scripts.Json_to_tree import json_to_dot, 
+from Scripts.Json_to_tree import json_to_dot, json_to_tree_image
 from beyondllm import source,retrieve,embeddings,llms,generator
 import pydot
 
