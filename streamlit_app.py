@@ -10,29 +10,6 @@ from Scripts.Json_to_tree import json_to_dot, json_to_tree_image
 from beyondllm import source,retrieve,embeddings,llms,generator
 import pydot
 
-
-# print('current PATH',os.environ['PATH']) 
-
-# process=subprocess.Popen(['which dot'], shell=True,
-#                            stdout=subprocess.PIPE, 
-#                            stderr=subprocess.PIPE)
-
-# out, err = process.communicate()
-# errcode = process.returncode
-
-# print(out, err, errcode) 
-
-# gv_path=''.join(out.decode().strip().rsplit('/',maxsplit=1)[:-1])
-
-# if gv_path:
-#     os.environ['PATH']=os.environ['PATH']+':'+ gv_path
-
-# import os
-# os.environ["PATH"] += os.pathsep + 'Graphiviz/bin/bin/'
-# os.environ["PATH"] += os.pathsep + 'Graphviz/bin/dot.exe'
-
-
-
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
 api_version = st.secrets.azure_embeddings_credentials.API_VERSION
@@ -130,8 +107,6 @@ if submit:
           )
 
         retriever = retrieve.auto_retriever(data, embed_model, type="normal", top_k=4)
-        # vectordb = ChromaVectorDb(collection_name="my_persistent_collection", persist_directory="./db/chroma/")
-     
         llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-32k" ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
         decision_tree_json = pipeline.call()
@@ -140,31 +115,7 @@ if submit:
         # Create a new graph
         # Create a new directed graph
 
-        def json_to_tree_image(graph, parent_node, parent_label):
-            if isinstance(parent_node, dict):
-                for key, value in parent_node.items():
-                    if key.startswith("Question"):
-                        question_id = parent_label.replace(" ", "_") + "_" + key
-                        label_text = "\n".join(value[i:i+30] for i in range(0, len(value), 30))
-                        node = pydot.Node(question_id, label=label_text, shape='box', style='filled', fillcolor='lightblue')
-                        graph.add_node(node)
-                        edge = pydot.Edge(parent_label, question_id)
-                        graph.add_edge(edge)
-                        json_to_tree_image(graph, value, question_id)
-                    elif key in ["Yes", "No"]:
-                        option_label = parent_label + "_" + key
-                        node = pydot.Node(option_label, label=key, shape='box', style='filled', fillcolor='lightgreen' if key == "Yes" else 'lightcoral')
-                        graph.add_node(node)
-                        edge = pydot.Edge(parent_label, option_label)
-                        graph.add_edge(edge)
-                        json_to_tree_image(graph, value, option_label)
-                    elif key == "Result":
-                        result_label = parent_label + "_" + key
-                        result_str = f"{key}: {value}\nCouncil regulations: {parent_node['Council regulations']}"
-                        node = pydot.Node(result_label, label=result_str, shape='box', style='filled', fillcolor='lightgrey')
-                        graph.add_node(node)
-                        edge = pydot.Edge(parent_label, result_label)
-                        graph.add_edge(edge)
+        
         graph = pydot.Dot(graph_type='digraph')
         
         # Add the root node
