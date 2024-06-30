@@ -26,6 +26,10 @@ from beyondllm import source,retrieve,embeddings,llms,generator
 # if gv_path:
 #     os.environ['PATH']=os.environ['PATH']+':'+ gv_path
 
+import os
+os.environ["PATH"] += os.pathsep + 'Graphiviz/Graphviz-11.0.0-win64/bin/bin/'
+os.environ["PATH"] += os.pathsep + "Graphviz2.38/bin/dot.exe"
+
 endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
 azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
 api_version = st.secrets.azure_embeddings_credentials.API_VERSION
