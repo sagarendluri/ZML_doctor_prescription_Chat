@@ -135,15 +135,50 @@ if submit:
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
         decision_tree_json = pipeline.call()
         response = json.loads(decision_tree_json)
-        # Create a new graph
-        dot = Digraph(comment='Decision Tree')
+        # Function to recursively create nodes and edges in the graph
+        def json_to_graph(graph, parent_node, parent_label):
+            if isinstance(parent_node, dict):
+                for key, value in parent_node.items():
+                    if key.startswith("Question"):
+                        question_id = parent_label.replace(" ", "_") + "_" + key
+                        label_text = "\n".join(value[i:i+30] for i in range(0, len(value), 30))
+                        shape = 'diamond' if len(value) > 50 else 'box'
+                        graph.add_node(question_id, label=label_text, shape=shape, style='filled', fillcolor='lightblue')
+                        graph.add_edge(parent_label, question_id)
+                        json_to_graph(graph, value, question_id)
+                    elif key in ["Yes", "No"]:
+                        option_label = parent_label + "_" + key
+                        graph.add_node(option_label, label=key, shape='box', style='filled', fillcolor='lightgreen' if key == "Yes" else 'lightcoral')
+                        graph.add_edge(parent_label, option_label)
+                        json_to_graph(graph, value, option_label)
+                    elif key == "Result":
+                        result_label = parent_label + "_" + key
+                        result_str = f"{key}: {value}\nCouncil regulations: {parent_node['Council regulations']}"
+                        graph.add_node(result_label, label=result_str, shape='box', style='filled', fillcolor='lightgrey')
+                        graph.add_edge(parent_label, result_label)
+        
+        # Create a new directed graph
+        G = pgv.AGraph(directed=True)
+        
         # Add the root node
-        dot.node('Root', 'Start', shape='ellipse', style='filled', fillcolor='lightyellow')
-        # Build the DOT format
-        json_to_dot(dot, "Root", response, "Root")
-        # Render and display the graph using Graphviz engine
-        dot.format = 'png'
-        dot.render('decision_tree', view=True)
+        G.add_node('Root', label='Start', shape='ellipse', style='filled', fillcolor='lightyellow')
+        
+        # Build the graph from the JSON structure
+        json_to_graph(G, response, "Root")
+        
+        # Save and render the graph
+        G.layout(prog='dot')
+        G.draw('decision_tree.png')
+      
+        # # Create a new graph
+        # dot = Digraph(comment='Decision Tree')
+        # # Add the root node
+        # dot.node('Root', 'Start', shape='ellipse', style='filled', fillcolor='lightyellow')
+        # # Build the DOT format
+        # json_to_dot(dot, "Root", response, "Root")
+        # # Render and display the graph using Graphviz engine
+        # dot.format = 'png'
+        # dot.render('decision_tree', view=True)
         
         import streamlit as st
         with st.chat_message(""):
