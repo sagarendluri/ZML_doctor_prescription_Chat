@@ -60,12 +60,12 @@ if submit:
     Create a decision tree in JSON format based on the following structure:
 
     Write a question and question should be two response like yes or no. if yes it has fallowing answers or other question 
-        - If Yes, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
-        - If No, proceed to the next question2.( by giving some link to the next question not direct to next question)
+        - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
+        - If Yes, proceed to the next question2.( by giving some link to the next question not direct to next question)
 
     2. Next question based on the previous question outcome.
-        - If Yes, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
-        - If No, proceed to the next question.
+        - If No, the result should be: "Not restricted" additional -Council regulations: provide dates and articles if possible.
+        - If Yes, proceed to the next question.
     In simple terms - flow chat if conditons.
     [Continue this structure for as many questions as needed, ensuring each question branches into Yes/No answers and provides appropriate results based on the Council regulations.]
     Please continue this format for as many questions as needed, ensuring each question follows the same structure.
