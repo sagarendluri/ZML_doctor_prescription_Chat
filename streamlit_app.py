@@ -107,7 +107,7 @@ if submit:
         llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name=DEPLOYMENT_NAME ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
         decision_tree_json = pipeline.call()
-        response = json.loads(decision_tree_json)
+        data = json.loads(decision_tree_json)
         # Function to recursively create nodes and edges in the grap
         # Create a new graph
         # Create a new directed graph
