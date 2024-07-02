@@ -90,15 +90,19 @@ if submit:
             f.write(uploaded_file.getbuffer())
       
         data = source.fit(file_path, dtype="pdf", chunk_size=1024, chunk_overlap=0)
-        embed_model = AzureAIEmbeddings(
-              endpoint_url = endpoint_url,
-              azure_key = azure_key,
-              api_version= api_version,
-              deployment_name=deployment_name
-          )
+        embed_model = embeddings.AzureAIEmbeddings(
+                endpoint_url="https://marketplace.openai.azure.com/",
+                azure_key="d6d9522a01c74836907af2f3fd72ff85",
+                api_version="2024-02-01",
+                deployment_name="text-embed-marketplace")
+
 
         retriever = retrieve.auto_retriever(data, embed_model, type="normal", top_k=4)
-        llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name="gpt-4-32k" ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
+
+        BASE_URL = "https://gpt-res.openai.azure.com/"
+        DEPLOYMENT_NAME= "gpt-4-32k" 
+        API_KEY = "a20bc67dbd7c47ed8c978bbcfdacf930"
+        llm = AzureOpenAIModel(model="gpt4",azure_key = API_KEY,deployment_name=DEPLOYMENT_NAME ,endpoint_url=BASE_URL,model_kwargs={"max_tokens":512,"temperature":0.1})
         pipeline = generator.Generate(question=question, system_prompt=system_prompt, retriever=retriever, llm=llm)
         decision_tree_json = pipeline.call()
         response = json.loads(decision_tree_json)
