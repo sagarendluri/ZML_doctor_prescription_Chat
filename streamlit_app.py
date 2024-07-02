@@ -56,29 +56,41 @@ if submit:
     Your task is to extract the rules and exceptions in a way that enables the creation of a decision tree, facilitating integration into the proper flow.
     Legal Document Context: {context}
     Response Structure:
-    Please go through the document once: 
-    Create a decision tree in JSON format based on the following structure:
+    [Generate multiple questions ]
+    Question :1
+    If answer No  end of the process -> “Not restricted” 
+    If question Res, Result : « Not restricted (+articles from the document)
+    Write another question in sequence, if the first question is yes. And  go for the second question,.
+
+    If Answer is yes, should create two responses as mentioned below
+    If Yes,  -> Result : Not restricted (+articles from the document)”
+    If No, ->  Result ; Prohibited (+articles from the document)”
+    If Answer is no, should create two responses as mentioned below 
+    If Yes  -> Result : Not restricted (+articles from the document)”
+    If No , -> Result ;  Prohibited (+articles from the document)”
     {
-      "Questions": {
-        "Question1": "Your first question?",
+    "Question1": {
+        "No": "Not restricted",
         "Yes": {
-          "Question2": "Your next question if yes?",
-          "Yes": {
-            "Result": "Not restricted",
-            "Source": "Council Decision source for this result"
-          },
-          "No": {
-            "Result": "Prohibited",
-            "Source": "Council Decision source for this result"
-          }
+            "Question2": ,
+            "Yes": {
+                "Result": 
+                                        },
+            "No": {
+                "Result": 
+            }
         },
         "No": {
-          "Result": "Not restricted",
-          "Source": "Council Decision source for this result"
+            "Question3": ,
+            "Yes": {
+                "Result": 
+            },
+            "No": {
+                "Result": 
+            }
         }
-      }
     }
-
+    }
 
     Additional Instructions:
     
@@ -120,22 +132,59 @@ if submit:
         # Create a new directed graph
 
         
-        graph = pydot.Dot(graph_type='digraph')
+        def json_to_graph(graph, parent_label, parent_node):
+            if isinstance(parent_node, dict):
+                for key, value in parent_node.items():
+                    if key in ["Yes", "No"]:
+                        option_label = parent_label + "_" + key
+                        node = pydot.Node(option_label, label=key, shape='box', style='filled', fillcolor='lightgreen' if key == "Yes" else 'lightcoral')
+                        graph.add_node(node)
+                        edge = pydot.Edge(parent_label, option_label)
+                        graph.add_edge(edge)
+                        
+                        if isinstance(value, dict):
+                            for sub_key, sub_value in value.items():
+                                if sub_key.startswith("Question"):
+                                    question_label = option_label + "_" + sub_key
+                                    question_text = "\n".join(sub_value[i:i+30] for i in range(0, len(sub_value), 30))
+                                    node = pydot.Node(question_label, label=question_text, shape='box', style='filled', fillcolor='lightblue')
+                                    graph.add_node(node)
+                                    edge = pydot.Edge(option_label, question_label)
+                                    graph.add_edge(edge)
+                                    json_to_graph(graph, question_label, value)
+                                elif sub_key == "Result":
+                                    result_label = option_label + "_" + sub_key
+                                    result_str = f"{sub_key}: {sub_value}"
+                                    node = pydot.Node(result_label, label=result_str, shape='box', style='filled', fillcolor='lightgrey')
+                                    graph.add_node(node)
+                                    edge = pydot.Edge(option_label, result_label)
+                                    graph.add_edge(edge)
+                        else:
+                            json_to_graph(graph, option_label, value)
+                    elif key == "Result":
+                        result_label = parent_label + "_" + key
+                        result_str = f"{key}: {value}"
+                        node = pydot.Node(result_label, label=result_str, shape='box', style='filled', fillcolor='lightgrey')
+                        graph.add_node(node)
+                        edge = pydot.Edge(parent_label, result_label)
+                        graph.add_edge(edge)
         
-        # Add the root node
-        root_node = pydot.Node('Root', label='Start', shape='ellipse', style='filled', fillcolor='lightyellow')
-        graph.add_node(root_node)
-        
-        # Build the graph from the JSON structure
-        json_to_tree_image(graph, response, "Root")
-        image_name = uploaded_file.name+'_tree.png'
-        # Save the graph as a PNG image
+        graph = pydot.Dot(graph_type='graph')
+
+        start_label = "Is the entity listed in the sanctions list?"
+        start_question = data["Question1"]
+        start_node = pydot.Node(start_label, label=start_label, shape='box', style='filled', fillcolor='lightblue')
+        graph.add_node(start_node)
+
+        json_to_graph(graph, start_label, start_question)
+        image_name = "decision_tree.png"
         graph.write_png(image_name)
+
         
-        # # Display the graph
-        # from PIL import Image
-        # img = Image.open(uploaded_file.name+'_tree.png')
-        # img.show()
+        # Display the graph
+        from PIL import Image
+        img = Image.open(image_name)
+        img.show()
 
         with open(image_name, "rb") as file:
             btn = st.download_button(
