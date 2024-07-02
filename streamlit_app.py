@@ -8,14 +8,14 @@ from beyondllm.llms import AzureOpenAIModel
 from beyondllm.embeddings import AzureAIEmbeddings
 from beyondllm import source,retrieve,embeddings,llms,generator
 
-endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
-azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
-api_version = st.secrets.azure_embeddings_credentials.API_VERSION
-deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
-BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
-# DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
-API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
-st.title("Respectus decision tree generator")
+# endpoint_url = st.secrets.azure_embeddings_credentials.ENDPOINT_URL
+# azure_key = st.secrets.azure_embeddings_credentials.AZURE_KEY
+# api_version = st.secrets.azure_embeddings_credentials.API_VERSION
+# deployment_name = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
+# BASE_URL = st.secrets.azure_embeddings_credentials.BASE_URL
+# # DEPLOYMENT_NAME = st.secrets.azure_embeddings_credentials.DEPLOYMENT_NAME
+# API_KEY = st.secrets.azure_embeddings_credentials.API_KEY
+# st.title("Respectus decision tree generator")
 
 
 # api_key = st.text_input("API Key:", type="password")
