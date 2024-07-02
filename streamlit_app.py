@@ -33,6 +33,8 @@ if submit:
     Response Structure:
     [Generate multiple questions ]
     Question :1
+    Write a Question1 and then go with pattern.
+    
     If answer No  end of the process -> “Not restricted” 
     If question Res, Result : « Not restricted (+articles from the document)
     Write another question in sequence, if the first question is yes. And  go for the second question,.
